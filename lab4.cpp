@@ -14,14 +14,14 @@ using namespace std;
 
 
 class Paragraph {
-private:
+protected:
     vector<string> words;
 };
 
-class Document {
-private:
+class Document:public Paragraph {
+protected:
     Document() {}
-    vector<Paragraph> doc;
+    vector<string> doc;
 public:
     Document(string fileName) {
         ifstream myFileStrm(fileName);
@@ -36,7 +36,7 @@ public:
                 while (lineStringStrm >> word) {
                     cout << "Word: " << word << endl;
                 }
-                doc.push_back(para.push_back(word));
+                para.push_back(word);
                 
                 // Rather than printing out the words, store them
                 // by paragraphs (I highly suggest you implement a
@@ -51,7 +51,8 @@ public:
     void prettyPrint() {
         // print out the document, making sure that
         // no line of a paragraph is longer than 80 chars
-        /* TEMP*/
+        
+        
         
     }
 };
