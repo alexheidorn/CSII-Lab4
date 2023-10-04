@@ -18,10 +18,9 @@ protected:
     vector<string> words;
 };
 
-class Document:public Paragraph {
+class Document {
 protected:
     Document() {}
-    vector<string> doc;
 public:
     Document(string fileName) {
         ifstream myFileStrm(fileName);
@@ -30,13 +29,12 @@ public:
             while (getline(myFileStrm,theLine,'\n')) {
                 istringstream lineStringStrm(theLine);
                 string word;
-                Paragraph para;
                 int i;
                 cout << theLine.size() << endl;
                 while (lineStringStrm >> word) {
                     cout << "Word: " << word << endl;
                 }
-                para.push_back(word);
+                
                 
                 // Rather than printing out the words, store them
                 // by paragraphs (I highly suggest you implement a
