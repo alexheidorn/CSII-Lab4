@@ -16,9 +16,6 @@ using namespace std;
 class Paragraph {
 private:
     vector<string> words;
-public:
-    string getPara() { return para; };
-    string setPara(string line) { para = line; };
 };
 
 class Document {
@@ -33,18 +30,19 @@ public:
             while (getline(myFileStrm,theLine,'\n')) {
                 istringstream lineStringStrm(theLine);
                 string word;
+                Paragraph para;
+                int i;
                 cout << theLine.size() << endl;
                 while (lineStringStrm >> word) {
                     cout << "Word: " << word << endl;
                 }
-                doc.push_back(word)
+                doc.push_back(para.push_back(word));
                 
                 // Rather than printing out the words, store them
                 // by paragraphs (I highly suggest you implement a
                 // Paragraph class to hold the words of a paragraph
 
-                int i;
-                words[i].setPara(new string(theLine));
+               
             }
             myFileStrm.close();
         }
@@ -54,7 +52,7 @@ public:
         // print out the document, making sure that
         // no line of a paragraph is longer than 80 chars
         /* TEMP*/
-        words
+        
     }
 };
 
