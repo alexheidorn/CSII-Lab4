@@ -18,17 +18,20 @@ class Paragraph {
 protected:
     vector<string> words;
 public: 
-    Paragraph(string s){
+    void add(string s){
         words.push_back(s);
     }
+    void 
     void display(){
-        for words.size
+        for (auto i : words){
+            cout << i;
+        }
     }
 };
 
 class Document {
 protected:
-    list<Paragraph*> para;
+    list<Paragraph> para;
     Document() {}
 public:
     Document(string fileName) {
@@ -38,12 +41,12 @@ public:
             while (getline(myFileStrm,theLine,'\n')) {
                 istringstream lineStringStrm(theLine);
                 string word;
-                cout << theLine.size() << endl;
+                Paragraph paragraph;
+                para.push_back(paragraph);
+                //cout << theLine.size() << endl;
                 while (lineStringStrm >> word) {
-                    cout << "Word: " << word << endl;
+                    paragraph.add(word);
                 }
-                para.push_back(new Paragraph(word));
-                //
                 
                 // Rather than printing out the words, store them
                 // by paragraphs (I highly suggest you implement a
@@ -56,10 +59,11 @@ public:
         else { cout << "file not found";}
     }
     void prettyPrint() {
-        while(auto iterator)
+        for(auto )
         
-        
-        
+        string s;
+        s.length(); //number of characters
+        //check where s.length is <80
     }
 };
 
