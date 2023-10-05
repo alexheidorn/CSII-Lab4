@@ -47,11 +47,11 @@ public:
                 Paragraph paragraph;
                 paras.push_back(paragraph);
                 cout << theLine.size() << endl;
-                //int i = 0;
+                int i = 0;
                 while (lineStringStrm >> word) {
                     paragraph.add(word);
-                    //cout << "Word: " << paragraph.display(i) << endl;
-                    //i++;
+                    cout << "Word: " << paragraph.display(i) << endl;
+                    i++;
                 } 
             }
             myFileStrm.close();
@@ -64,7 +64,8 @@ public:
     void prettyPrint() {
         int charCount = 0;
         int j = 0;
-        for (auto itr = paras.begin(); itr != paras.end();){
+        auto itr = paras.begin();
+        for (itr; itr != paras.end();){
             for (int i = 0; i < paras[j].wordCount(); i++)
             {
                 //charCount += paras[j].wordLength(i);
@@ -73,7 +74,9 @@ public:
                     charCount = 0;
                 }
                 cout << paras[j].display(i) << " ";
-            }
+                cout << "j: " << j
+                    << " i: " << i << endl;
+            } 
             j++;
         }
     }
@@ -81,6 +84,6 @@ public:
 
 int main() {
     Document myDoc("GettysburgAddress.txt");
-    //myDoc.prettyPrint();
+    myDoc.prettyPrint();
     return 0;
 }
