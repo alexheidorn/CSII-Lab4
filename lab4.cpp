@@ -10,9 +10,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <list>
 using namespace std;
-
 
 class Paragraph {
 protected:
@@ -31,7 +29,6 @@ public:
         return words[i].length();
     }
 };
-
 class Document {
 protected:
     vector<Paragraph> paras;
@@ -44,7 +41,7 @@ public:
             while (getline(myFileStrm,theLine,'\n')) {  
                 istringstream lineStringStrm(theLine);
                 string word;
-                vector<Paragraph> p;
+                //vector<Paragraph> p;
                 Paragraph paragraph;
                 
                 /* cout << theLine.size() << endl;
@@ -83,16 +80,20 @@ public:
             if (paras[j].wordCount() == 0 ) {
                 cout << endl; 
                 charCount = 0;
-            };
+            }
             for (int i = 0; i < paras[j].wordCount(); i++)
             {
-                if (charCount >= 80){
-                    cout << "\n";
+                charCount += paras[j].wordLength(i) + 1;
+                /* if most recent word puts count over 80,
+                end line, reset count, and re-add most recent word because it's
+                the start of the new line
+                */
+                if (charCount >= 80){ 
+                    cout << endl;
                     charCount = 0;
+                    charCount += paras[j].wordLength(i) + 1;
                 }
-                charCount += paras[j].wordLength(i);
                 cout << paras[j].display(i) << " ";
-                charCount += 1;
                 /* tests that j & i were working properly
                 cout << "j: " << j
                     << " i: " << i << endl;
@@ -103,7 +104,6 @@ public:
         }
     }
 };
-
 int main() {
     Document myDoc("GettysburgAddress.txt");
     myDoc.prettyPrint();
