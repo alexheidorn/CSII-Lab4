@@ -42,6 +42,7 @@ public:
         string theLine;
         if (myFileStrm.is_open()) {
             while (getline(myFileStrm,theLine,'\n')) {
+                int j = 0;
                 istringstream lineStringStrm(theLine);
                 string word;
                 Paragraph paragraph;
@@ -50,9 +51,10 @@ public:
                 int i = 0;
                 while (lineStringStrm >> word) {
                     paragraph.add(word);
-                    cout << "Word: " << paragraph.display(i) << endl;
+                    cout << "Word: " << paras[j].display(i) << endl;
                     i++;
                 } 
+                j++;
             }
             myFileStrm.close();
         }
