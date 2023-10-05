@@ -46,39 +46,41 @@ public:
                 string word;
                 Paragraph paragraph;
                 paras.push_back(paragraph);
-                //cout << theLine.size() << endl;
+                cout << theLine.size() << endl;
+                //int i = 0;
                 while (lineStringStrm >> word) {
                     paragraph.add(word);
+                    //cout << "Word: " << paragraph.display(i) << endl;
+                    //i++;
                 } 
             }
             myFileStrm.close();
         }
         else { cout << "file not found";}
     }
-    Paragraph getPara(int loc){
-        return paras[loc];
+    int paraCount(){
+        return paras.size();
     }
-
-
-
-    void prettyPrint(Document paras) {
+    void prettyPrint() {
         int charCount = 0;
-        for (auto itr = paras.begin(); itr != paras.end(); ++itr;){
-            for (int i = 0; i < paras.getPara(itr).wordCount(); i++)
+        int j = 0;
+        for (auto itr = paras.begin(); itr != paras.end();){
+            for (int i = 0; i < paras[j].wordCount(); i++)
             {
-                charCount += paras.getPara(itr).wordLength(i);
+                //charCount += paras[j].wordLength(i);
                 if (charCount > 80){
                     cout << "\n";
                     charCount = 0;
                 }
-                cout << paras.getPara(itr).display(i) << " ";
+                cout << paras[j].display(i) << " ";
             }
+            j++;
         }
     }
 };
 
 int main() {
     Document myDoc("GettysburgAddress.txt");
-    myDoc.prettyPrint();
+    //myDoc.prettyPrint();
     return 0;
 }
