@@ -20,18 +20,21 @@ protected:
 public: 
     void add(string s){
         words.push_back(s);
+    } 
+    string display(int i){
+        return words[i];
     }
-    void 
-    void display(){
-        for (auto i : words){
-            cout << i;
-        }
+    int wordCount(){
+        return words.size();
+    }
+    int wordLength(int i){
+        return words[i].length();
     }
 };
 
 class Document {
 protected:
-    list<Paragraph> para;
+    vector<Paragraph> paras;
     Document() {}
 public:
     Document(string fileName) {
@@ -42,28 +45,35 @@ public:
                 istringstream lineStringStrm(theLine);
                 string word;
                 Paragraph paragraph;
-                para.push_back(paragraph);
+                paras.push_back(paragraph);
                 //cout << theLine.size() << endl;
                 while (lineStringStrm >> word) {
                     paragraph.add(word);
-                }
-                
-                // Rather than printing out the words, store them
-                // by paragraphs (I highly suggest you implement a
-                // Paragraph class to hold the words of a paragraph
-
-               
+                } 
             }
             myFileStrm.close();
         }
         else { cout << "file not found";}
     }
-    void prettyPrint() {
-        for(auto )
-        
-        string s;
-        s.length(); //number of characters
-        //check where s.length is <80
+    Paragraph getPara(int loc){
+        return paras[loc];
+    }
+
+
+
+    void prettyPrint(Document paras) {
+        int charCount = 0;
+        for (auto itr = paras.begin(); itr != paras.end(); ++itr;){
+            for (int i = 0; i < paras.getPara(itr).wordCount(); i++)
+            {
+                charCount += paras.getPara(itr).wordLength(i);
+                if (charCount > 80){
+                    cout << "\n";
+                    charCount = 0;
+                }
+                cout << paras.getPara(itr).display(i) << " ";
+            }
+        }
     }
 };
 
